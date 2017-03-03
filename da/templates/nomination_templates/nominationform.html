@@ -1,0 +1,39 @@
+{% extends 'theme/admin/base.html' %}
+{% load staticfiles %}
+{% block content_wrapper %}
+{% load crispy_forms_tags  %}
+
+        <section class="content-header">
+        <center>
+                    <img src="{% static 'admin_theme/dist/img/kct.png' %}">
+                        </center>
+        <center>
+            <h1>Nomination Form</h1>
+            </center>
+        </section>
+
+        <section class="content">
+            <div class="row ">
+                <div class="col-md-12">
+
+                    {% crispy form %}
+                {% if success%}
+                    <script>
+                    swal("Registration Successful!", 'Your reference number is "{{ id }}"', "success")
+                    </script>
+
+
+                    {% endif %}
+                {% if error %}
+                    <script>
+                    swal("Error", 'Enter a Valid Phone number"', "error")
+                    </script>
+                {% endif %}
+                </div>
+            </div>
+
+        </section>
+
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<!-- Sidebar Menu -->
+<ul class="sidebar-menu">
+    <li class="header">Main Navigation</li>
+    <!-- Optionally, you can add icons to the links -->
+    <li class="active"><a href="{% url 'registrations' %}"><i class="fa fa-link"></i> <span>View Registrations</span></a></li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-user"></i> <span>Report Generation</span>
+            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{% url 'download' %}">Download</a></li>
+
+        </ul>
+    </li>
+</ul>
+<!-- /.sidebar-menu -->

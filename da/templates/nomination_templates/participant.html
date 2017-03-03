@@ -1,0 +1,41 @@
+{% extends 'theme/admin/base.html' %}
+{% load staticfiles %}
+{%  block content_wrapper %}
+<section class="content-header">
+            <h1>Admin Home</h1>
+        </section>
+    <section class="content">
+            <div class="row">
+                <div class="th-md-12">
+
+
+                        <table class="table table striped">
+                    <tr>
+
+                        <th>SL.No</th>
+                        <th>ROLL NO</th>
+                        <th>NAME</th>
+                        <th>DEPARTMENT</th>
+                        <th>EMAIL</th>
+                        <th>PHONE NUMBER</th>
+
+                    </tr>
+                            {% for form in form %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a href="{% url 'profile' pk=form.pk%}">{{ form.rollno }}</a></td>
+                                <td>{{ form.name }}</td>
+                                <td>{{ form.branch }}</td>
+                                <td>{{ form.email_id }}</td>
+                                <td>{{ form.mobile_No }}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </table>
+
+</div>
+            </div>
+
+        </section>
+
+{% endblock %}

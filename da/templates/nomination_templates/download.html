@@ -1,0 +1,16 @@
+{% extends 'theme/admin/base.html' %}
+{% load staticfiles %}
+{%  block content_wrapper %}
+<section class="content-header">
+            <h1>Admin Home</h1>
+        </section>
+    <section class="content">
+            <div class="row">
+                <div class="th-md-12">
+                    <div class="col-lg-8">
+                    <a class="btn btn-primary" href="{% url 'export' %}">EXPORT FULL DETAILS IN CSV</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}
