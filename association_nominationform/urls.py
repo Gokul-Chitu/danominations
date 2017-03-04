@@ -33,6 +33,5 @@ urlpatterns = [
     url(r'^dashboard/report/download/$', views.download, name='download'),
     url(r'^dashboard/report/download/export$', views.export_csv, name='export'),
     url(r'^dashboard/signing_out/$', views.signout, name='signout'),
-    url(r'^sending_mail/$', views.send_email, name='send_email'),
 
 ]

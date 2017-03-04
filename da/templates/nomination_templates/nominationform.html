@@ -17,18 +17,96 @@
                 <div class="col-md-12">
 
                     {% crispy form %}
-                {% if success%}
+
+                    {% if success%}
                     <script>
                     swal("Registration Successful!", 'Your reference number is "{{ id }}"', "success")
                     </script>
-
-
                     {% endif %}
-                {% if error %}
+
+                     {% if error %}
                     <script>
                     swal("Error", 'Enter a Valid Phone number"', "error")
                     </script>
-                {% endif %}
+                     {% endif %}
+
+                    <script>
+                        document.getElementById("id_rollno").addEventListener("change", myFunction);
+                        function myFunction()
+                        {
+                            var x = document.getElementById("id_rollno");
+                            x.value = x.value.toUpperCase();
+                            var y = document.getElementById("id_branch");
+                            var z = x.value.slice(2,5);
+                            if(z=='BAU') {
+                                y.value = "Automobile Engineering";
+                            }
+                            else if (z=='BAE') {
+                                y.value = "Aeronautical Engineering";
+                            }
+                            else if(z=='BEE')
+                                y.value = "Electrical and Electronics Engineering";
+                            else if (z=='BEC')
+                                y.value = "Electrical and Communication Engineering";
+                            else if(z=='BEI')
+                                y.value = "Electronics and Instrumentation Engineering";
+                            else if (z=='BFT')
+                                y.value = "Fashion Technology";
+                            else if(z=='BIT')
+                                y.value = "Information Technology";
+                            else if (z=='BME')
+                                y.value = "Mechanical Engineering";
+                            if(z=='BMC')
+                                y.value = "Mechatronics Engineering";
+                            else if (z=='BTT')
+                                y.value = "Textile Technology";
+                            else if(z=='BBT')
+                                y.value = "Bio-Technology";
+                            else if (z=='BCE')
+                                y.value = "Civil Engineering";
+                            else if(z=='MCA')
+                                y.value = "Computer Applications";
+                            else if (z=='BCS')
+                                y.value = "Computer Science and Engineering";
+                            else if (z=='MBA')
+                                y.value = "Management Studies";
+
+                            var w = x.value.slice(0,2);
+                            var u = document.getElementById("id_req_posistion");
+                            var v = document.getElementById("id_year");
+                            if (w==14) {
+                                u.value = "President";
+                                v.value = "3";
+                            }
+                            else if (w==15) {
+                                u.value = "Secretary";
+                                v.value = "2";
+                            }
+                            else if(w==16) {
+                                u.value = "Joint Secretary";
+                                v.value = "1";
+                            }
+                        }
+                    </script>
+
+                    <script>
+                         document.getElementById("id_cgpa").addEventListener("change", myFunction1);
+                         function myFunction1(){
+                             var a = document.getElementById("id_cgpa").value;
+                             var b = document.getElementById("id_no_of_arrears");
+                             if(a!=0) {
+                                 b.value = 0;
+                                 document.getElementById("id_no_of_arrears").readOnly = true
+                             }
+                             else
+                             {
+                                 document.getElementById("id_no_of_arrears").readOnly = false
+                             }
+
+                         }
+                    </script>
+
+
                 </div>
             </div>
 

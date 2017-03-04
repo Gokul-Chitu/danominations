@@ -25,10 +25,7 @@ SECRET_KEY = 'e@1whq2w=dpyp*lhr2r==y_q7va22#tcs0e^vo5h%g#svr)!6-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vidhyasagar.pagekite.me',
-                 '127.0.0.1',
-                 '0.0.0.0'
-                 ]
+ALLOWED_HOSTS = ['10.1.75.73']
 
 
 # Application definition
@@ -43,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'easy_pdf',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -129,12 +125,20 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/dashboard'
-EMAIL_BACKEND = 'sparkpost.django.email_backend.SparkPostEmailBackend'
-SPARKPOST_API_KEY = 'bb284d945a80c85431e2dfbc856c33389a7c5f67'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST_USER = 'gokul.13cs@kct.ac.in'
+
+EMAIL_HOST_PASSWORD = '0599427331905'
+
+EMAIL_PORT = 587
+
+#This did the trick
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
-SPARKPOST_OPTIONS = {
-    'track_opens': False,
-    'track_clicks': False,
-    'transactional': True,
-}
