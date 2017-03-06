@@ -20,7 +20,7 @@
                         <th>PHONE NUMBER</th>
 
                     </tr>
-                            {% for form in form %}
+                            {% for form in num %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
                                 <td><a href="{% url 'profile' pk=form.pk%}">{{ form.rollno }}</a></td>
@@ -28,14 +28,33 @@
                                 <td>{{ form.branch }}</td>
                                 <td>{{ form.email_id }}</td>
                                 <td>{{ form.mobile_No }}</td>
-
                             </tr>
                             {% endfor %}
                         </table>
-
-</div>
+                        </div>
             </div>
-
         </section>
+
+    {% if num.has_other_pages %}
+  <ul class="pagination">
+    {% if num.has_previous %}
+      <li><a href="?page={{ num.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in num.paginator.page_range %}
+      {% if num.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if num.has_next %}
+      <li><a href="?page={{ num.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 
 {% endblock %}

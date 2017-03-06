@@ -3,6 +3,21 @@ from django.db import models
 
 # Create your models here.
 class nomination(models.Model):
+    BRANCH_CHOICES = (
+        ('Aeronautical Engineering', 'Aeronautical Engineering'), ('Automobile Engineering', 'Automobile Engineering'),
+        ('Bio-Technology', 'Bio-Technology'), ('Civil Engineering', 'Civil Engineering'),
+        ('Computer Applications', 'Computer Applications'),
+        ('Computer Science and Engineering', 'Computer Science and Engineering')
+        , ('Electrical and Electronics Engineering', 'Electrical and Electronics Engineering'),
+        ('Electronics and Communication Engineering', 'Electronics and Communication Engineering'),
+        ('Electronics and Instrumentation Engineering', 'Electronics and Instrumentation Engineering'),
+        ('Fashion Technology', 'Fashion Technology'),
+        ('Information Technology', 'Information Technology'),
+        ('Management Studies', 'Management Studies'),
+        ('Mechanical Engineering', 'Mechanical Engineering'),
+        ('Mechatronics Engineering', 'Mechatronics Engineering'),
+        ('Science and Humanities', 'Science and Humanities'),
+        ('Textile Technology', 'Textile Technology'))
     GENDER_CHOICES = (('Male', 'Male'), ('Female', 'Female'))
     firstyear = 1
     secondyear = 2
@@ -12,29 +27,14 @@ class nomination(models.Model):
 
     rollno = models.CharField(max_length=8, null=True,)
     name = models.CharField(max_length=255)
-    gender = models.IntegerField(choices=GENDER_CHOICES,default="Male")
+    gender = models.CharField(choices=GENDER_CHOICES,max_length=20,default="Male")
     YEAR_CHOICES = (
     (firstyear, 'I (Batch 2016-20)'), (secondyear, 'II (Batch 2015-19)'), (thirdyear, 'III (Batch 2014-18)'))
     year = models.IntegerField(choices=YEAR_CHOICES, default=firstyear)
-    BRANCH_CHOICES = (
-    ('Aeronautical Engineering', 'Aeronautical Engineering'), ('Automobile Engineering', 'Automobile Engineering'),
-    ('Bio-Technology', 'Bio-Technology'), ('Civil Engineering', 'Civil Engineering'),
-    ('Computer Applications', 'Computer Applications'),
-    ('Computer Science and Engineering', 'Computer Science and Engineering')
-    , ('Electrical and Electronics Engineering', 'Electrical and Electronics Engineering'),
-    ('Electronics and Communication Engineering', 'Electronics and Communication Engineering'),
-    ('Electronics and Instrumentation Engineering', 'Electronics and Instrumentation Engineering'),
-    ('Fashion Technology', 'Fashion Technology'),
-    ('Information Technology', 'Information Technology'),
-    ('Management Studies', 'Management Studies'),
-    ('Mechanical Engineering', 'Mechanical Engineering'),
-    ('Mechatronics Engineering', 'Mechatronics Engineering'),
-    ('Science and Humanities', 'Science and Humanities'),
-    ('Textile Technology', 'Textile Technology'))
     branch = models.CharField(choices=BRANCH_CHOICES, default='Aernonautical Engineering', max_length=255)
-    cgpa = models.FloatField(max_length=3)
-    no_of_arrears = models.IntegerField()
-    history_of_arrears = models.IntegerField(default=0)
+    cgpa = models.CharField(max_length=4,default=0)
+    no_of_arrears = models.CharField(max_length=2,default=0)
+    history_of_arrears = models.CharField(max_length=2,default=0)
     ADM_TYPE_CHOICES = (('Counselling', 'Counselling'), ('Management', 'Management'))
     admission_type = models.CharField(choices=ADM_TYPE_CHOICES, default='Counselling', max_length=255)
     RESIDENCE_CHOICES = (('Urban', 'Urban'), ('Rural', 'Rural'))

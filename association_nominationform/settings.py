@@ -124,6 +124,7 @@ USE_TZ = True
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATIC_URL = '/static/'
+
 LOGIN_REDIRECT_URL = '/dashboard'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -132,13 +133,11 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST = 'smtp.gmail.com'
 
-EMAIL_HOST_USER = 'gokul.13cs@kct.ac.in'
+EMAIL_HOST_USER = 'da.nomination@kct.ac.in'
 
-EMAIL_HOST_PASSWORD = '0599427331905'
+EMAIL_HOST_PASSWORD = 'Leadership'
 
 EMAIL_PORT = 587
 
 #This did the trick
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-
