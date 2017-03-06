@@ -23,8 +23,9 @@ def nominationfields(request):
                 nomi = form.save()
                 success = 1
                 usermail = nomi.email_id
-                sendmail(usermail)
                 queryset = nomination.objects.filter(rollno=nomi.rollno).order_by('-applied_at')[0]
+                refno = queryset.id
+                sendmail(usermail,refno)
                 form = nominationform()
                 return render(request, 'nomination_templates/nominationform.html',
                               {'success': success, 'form': form, 'id': queryset.id})
@@ -184,11 +185,11 @@ def signout(request):
     logout(request)
     return redirect('login')
 
-def sendmail(usermail):
+def sendmail(usermail,refno):
     htmly = get_template('nomination_templates/email.html')
     text_content = ''
     html_content = htmly.render()
-    subject = 'KCT DA | Nominations'
+    subject = 'KCT DA | Nominations Ref No :'+str(refno)
     from_email = 'da.nomination@kct.ac.in'
     msg = EmailMultiAlternatives(subject, text_content, from_email, [usermail])
     msg.attach_alternative(html_content, "text/html")

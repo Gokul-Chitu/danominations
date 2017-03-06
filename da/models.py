@@ -27,7 +27,7 @@ class nomination(models.Model):
 
     rollno = models.CharField(max_length=8, null=True,)
     name = models.CharField(max_length=255)
-    gender = models.CharField(choices=GENDER_CHOICES,max_length=20,default="Male")
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=20, default="Male")
     YEAR_CHOICES = (
     (firstyear, 'I (Batch 2016-20)'), (secondyear, 'II (Batch 2015-19)'), (thirdyear, 'III (Batch 2014-18)'))
     year = models.IntegerField(choices=YEAR_CHOICES, default=firstyear)
